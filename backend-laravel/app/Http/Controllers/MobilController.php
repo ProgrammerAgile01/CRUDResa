@@ -12,54 +12,28 @@ class MobilController extends Controller
      */
     public function index()
     {
-        //
+        return Mobil::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        return Mobil::create($request->all());
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Mobil $mobil)
+    public function show($id)
     {
-        //
+        return Mobil::findOrFail($id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Mobil $mobil)
+    public function update(Request $request, $id)
     {
-        //
+        $mobil = Mobil::findOrFail($id);
+        $mobil->update($request->all());
+        return $mobil;
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Mobil $mobil)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Mobil $mobil)
-    {
-        //
+        return Mobil::destroy($id);
     }
 }
